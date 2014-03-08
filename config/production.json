@@ -1,0 +1,11 @@
+﻿{
+    //this should be the same as the options parameter for the tedious Connection constructor
+	"database":{
+		"userName":"mmcount",
+		"password":"mmcount123",
+		"server":"localhost",
+		"options":{
+			"database":"mmcount"
+		}
+    }
+}

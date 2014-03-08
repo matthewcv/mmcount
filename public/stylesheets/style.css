@@ -1,0 +1,75 @@
+H1 {
+  background-color: red;
+  color: white;
+}
+body {
+  padding: 0 10px;
+}
+.propBase {
+  border: solid 1px #667e82;
+  padding: 4px;
+}
+.propKeys {
+  border: solid 1px #667e82;
+  padding: 4px;
+  color: #667e82;
+}
+.propVals {
+  border: solid 1px #667e82;
+  padding: 4px;
+  color: white;
+  background-color: #667e82;
+}
+.mmscounts label {
+  color: #c4c4c4;
+  font-weight: bold;
+}
+.mmscounts .input-group {
+  margin-bottom: 5px;
+}
+#red {
+  border-color: red;
+}
+#green {
+  border-color: green;
+}
+#orange {
+  border-color: orange;
+}
+#blue {
+  border-color: blue;
+}
+#yellow {
+  border-color: yellow;
+}
+#brown {
+  border-color: brown;
+}
+label[for=red] {
+  background-color: red;
+  border-color: red;
+}
+label[for=green] {
+  background-color: green;
+  border-color: green;
+}
+label[for=orange] {
+  background-color: orange;
+  border-color: orange;
+}
+label[for=blue] {
+  background-color: blue;
+  border-color: blue;
+}
+label[for=yellow] {
+  background-color: yellow;
+  border-color: yellow;
+}
+label[for=brown] {
+  background-color: brown;
+  border-color: brown;
+}
+.signin img {
+  height: 40px;
+  width: 120px;
+}

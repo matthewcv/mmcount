@@ -1,0 +1,26 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>vars</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+</head>
+<body>
+    <h1>some vars and junk</h1>
+
+    <table>
+        {{#each stuff}}
+        <tr>
+            {{#if sourceName}}
+            <td colspan="2" class="propVals">
+                {{sourceName}}
+            </td>
+            {{else}}
+            <td class="propKeys">{{key}}</td>
+            <td class="propVals">{{value}}</td>
+            {{/if}}
+        </tr>
+        {{/each}}
+    </table>
+</body>
+</html>

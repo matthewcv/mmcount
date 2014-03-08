@@ -1,0 +1,20 @@
+﻿{
+    //this should be the same as the options parameter for the tedious Connection constructor
+	"database":{
+		"userName":"mmcount",
+		"password":"mmcount123",
+		"server":"localhost",
+		"options":{
+		    "database":"mmcount"
+		}
+	},
+
+	"passport":{
+	    //this is the same as the options object for the passport google oauth2 strategy
+	    "google":{
+	        "clientID": "311786034318.apps.googleusercontent.com",
+	        "clientSecret": "Hh6RYdP-0t29907e3J11WKU5",
+	        "callbackURL": "http://localhost:1337/auth/googlecallback"
+	    }
+	}
+}
