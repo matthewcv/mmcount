@@ -5,7 +5,7 @@
 		"password":"mmcount123",
 		"server":"localhost",
 		"options":{
-		    "database":"mmcount"
+		    "database":"mcv"
 		}
 	},
 

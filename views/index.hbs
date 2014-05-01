@@ -14,6 +14,22 @@
         </h4>{{/if}}
         <h1>count yr M&Ms</h1>
         {{#if user}}
+		<div class="chart" data-bind="with:globalBags">
+			<span class="red" data-bind="style:{width:(red.percent * 100) + '%'}"></span>
+			<span class="green" data-bind="style:{width:(green.percent * 100) + '%'}"></span>
+			<span class="blue" data-bind="style:{width:(blue.percent * 100) + '%'}"></span>
+			<span class="brown" data-bind="style:{width:(brown.percent * 100) + '%'}"></span>
+			<span class="orange" data-bind="style:{width:(orange.percent * 100) + '%'}"></span>
+			<span class="yellow" data-bind="style:{width:(yellow.percent * 100) + '%'}"></span>
+		</div>
+		<div class="chart" data-bind="with:userBags">
+			<span class="red" data-bind="style:{width:(red.percent * 100) + '%'}"></span>
+			<span class="green" data-bind="style:{width:(green.percent * 100) + '%'}"></span>
+			<span class="blue" data-bind="style:{width:(blue.percent * 100) + '%'}"></span>
+			<span class="brown" data-bind="style:{width:(brown.percent * 100) + '%'}"></span>
+			<span class="orange" data-bind="style:{width:(orange.percent * 100) + '%'}"></span>
+			<span class="yellow" data-bind="style:{width:(yellow.percent * 100) + '%'}"></span>
+		</div>
         <form id="mmcountform" class="mmscounts" data-bind="if:currentCount">
             <div>
                 <div class="row">
@@ -79,15 +95,33 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6" id="userPie">
-            </div>
-            <div class="col-md-6" id="globalPie">
-            </div>
-        </div>
-        <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
-        <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js"></script>
-        <script type="text/javascript" src="//www.google.com/jsapi"></script>
+
+		<div class="" id="statsPopup" data-bind="with:statsDisplay">
+			<span data-bind="if:global">The WORLD has</span>
+			<span data-bind="if:user">YOU have</span> 
+			added <span data-bind="text:stats.totalCandies"></span> M&Ms from <span data-bind="text:stats.summary.totalBags"></span> bags.<br />
+			<table>
+				<tr>
+					<td></td><td>Red</td><td>Green</td><td>Blue</td><td>Brown</td><td>Orange</td><td>Yellow</td>
+				</tr>
+				<tr>
+					<td>Total</td><td data-bind="text:stats.summary.totalRed"></td><td data-bind="text:stats.summary.totalGreen"></td>
+					<td data-bind="text:stats.summary.totalBlue"></td><td data-bind="text:stats.summary.totalBrown"></td>
+					<td data-bind="text:stats.summary.totalOrange"></td><td data-bind="text:stats.summary.totalYellow"></td>
+
+				</tr>
+				<tr>
+					<td>Percent</td><td data-bind="text:parseInt(stats.red.percent * 100)"></td><td data-bind="text:parseInt(stats.green.percent * 100)"></td>
+					<td data-bind="text:parseInt(stats.blue.percent * 100)"></td><td data-bind="text:parseInt(stats.brown.percent * 100)"></td>
+					<td data-bind="text:parseInt(stats.orange.percent * 100)"></td><td data-bind="text:parseInt(stats.yellow.percent * 100)"></td>
+
+				</tr>
+
+			</table>
+		</div>
+
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-debug.js"></script>
         <script type="text/javascript" src="/models?model=MmBag"></script>
         <script type="text/javascript" src="/javascripts/mmnerd.js"></script>
         {{/if}}

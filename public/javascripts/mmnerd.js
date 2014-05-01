@@ -15,74 +15,65 @@
         });
     }
 
-    function makePieChart(chart, data) {
+
+    function ViewModel(){
         
-    }
 
-    function ViewModel() {
-        this.currentCount = ko.observable( new module.exports.MmBag());
+        }
+    
+    ViewModel.prototype = {
+        currentCount : ko.observable( new module.exports.MmBag()),
 
-        this.validationResult = ko.observable({hardErrs: {},softErrs: {}}); 
+        validationResult : ko.observable({hardErrs: {},softErrs: {}}),
 
-        this.valMessages = {
+        valMessages : {
             
             forcePosInt:"Needs to be a whole number larger than 0.",
             $model: {
                 allRequired:"You didn't put in a number for all the colors.  Is that right?",
                 someRequired:"You didn't even put any numbers."
             }
-        }
+        },
 
-        this.sending = false;
-        this.addCountJustHappened = ko.observable(false);
+        sending: false,
+        addCountJustHappened : ko.observable(false),
 
-        this.userBags = ko.observable();
-        this.globalBags = ko.observable();
-        this.userBags.subscribe(this.userBagsChanged, this);
-        this.globalBags.subscribe(this.globalBagsChanged, this);
+        userBags : ko.observable(),
+        globalBags : ko.observable(),
 
-        this.userPie = new Chart($("#userPie").get(0).getContext("2d"));
-        this.globalPie = new Chart($("#globalPie").get(0).getContext("2d"));
+        statsDisplay: ko.observable(),
+                
 
-        this.userBagsChanged = function(data) {
-            makePieChart(this.userPie, data);
-        }
-
-        this.globalBagsChanged = function(data) {
-            makePieChart(this.globalPie, data);
-        }
-
-        
-
-        this.submitCount = function() {
-            
+        submitCount : function() {
 
             this.validationResult(validate(this.currentCount()));
             var vr = this.validationResult();
             if (Object.keys(vr.hardErrs).length + Object.keys(vr.softErrs).length == 0) {
                 this.doTheSubmit();
             }
-        }
+        },
 
-        this.submitCountReally = function() {
+        submitCountReally : function() {
             this.validationResult(validate(this.currentCount()));
             var vr = this.validationResult();
             if (Object.keys(vr.hardErrs).length == 0) {
                 this.doTheSubmit();
             }
-        }
+        },
 
-        this.theSubmitReturned = function(response) {
+        theSubmitReturned : function(response) {
+            
             this.currentCount(null);
+            this.getInitData();
             this.addCountJustHappened(true);
             var that = this;
             setTimeout(function() {
                 that.addCountJustHappened(false);
             }, 5000);
 
-        }
+        },
 
-        this.doTheSubmit = function() {
+        doTheSubmit :function() {
             var that = this;
             if (this.sending) return;
             this.sending = true;
@@ -100,17 +91,22 @@
                     alert('crap.  Something terrible happened.  Check the console.');
                 }
             });
-        }
+        },
 
 
-        this.getInitData = function() {
+        getInitData : function() {
             var that = this;
             $.getJSON("/initData").done(function(data) {
+                
                 that.globalBags(module.exports.createStats(data.globalSummary));
                 that.userBags(module.exports.createStats(data.userSummary));
-
+                var sd = {global:true,user:null,stats:that.globalBags()}
+                console.dir(sd);
+that.statsDisplay(sd);
             });
-        }
+
+            
+        },
         
     }
 

@@ -1,13 +1,18 @@
 
 /**
  * Module dependencies.
+
+
+
  */
+
+
 
 var express = require('express');
 var hbs = require('express-hbs');
 var http = require('http');
 var path = require('path');
-var less = require('less-middleware');
+//var less = require('less-middleware');
 
 var config = require('./config');
 var db = require('./db');
@@ -37,19 +42,22 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(less({
-        src: __dirname + '/public',
-        compress: false
-    }));
+//app.use(less({
+//        src: __dirname + '/public',
+//        compress: false
+//    }));
 
 
-app.use(express.errorHandler());
 
 require('./models/serverToBrowser').setUp(app);
 
 require('./routes')(app);
 auth.routes(app);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.use(express.errorHandler());
+
+app.listen(app.get('port'));
+
+//http.createServer(app).listen(app.get('port'), function(){
+//  console.log('Express server listening on port ' + app.get('port'));
+//});

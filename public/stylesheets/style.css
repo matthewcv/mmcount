@@ -73,3 +73,33 @@ label[for=brown] {
   height: 40px;
   width: 120px;
 }
+
+.chart{
+    margin:10px 0;
+    font-size:0px;
+}
+
+.chart span{
+    display:inline-block;
+    
+    height:20px;
+}
+
+.chart .red {
+    background-color:red;
+}
+.chart .green {
+    background-color:green;
+}
+.chart .blue {
+    background-color:blue;
+}
+.chart .brown {
+    background-color:brown;
+}
+.chart .yellow {
+    background-color:yellow;
+}
+.chart .orange {
+    background-color:orange;
+}

@@ -161,6 +161,7 @@ Takes an object that looks like this
             average: summaryData.totalYellow / summaryData.totalBags,
             percent: summaryData.totalYellow / totalCandies
         }
+        return stats;
     };
 
 

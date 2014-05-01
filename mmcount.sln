@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "mmcount", "mmcount.njsproj", "{0DC0E964-668B-4ABB-B276-F757D3EFE446}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "azuresites", "..\azuresites\azuresites.sqlproj", "{CC545733-2A5E-407E-BE51-532CC06BD9B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{0DC0E964-668B-4ABB-B276-F757D3EFE446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DC0E964-668B-4ABB-B276-F757D3EFE446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DC0E964-668B-4ABB-B276-F757D3EFE446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC545733-2A5E-407E-BE51-532CC06BD9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC545733-2A5E-407E-BE51-532CC06BD9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC545733-2A5E-407E-BE51-532CC06BD9B3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CC545733-2A5E-407E-BE51-532CC06BD9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC545733-2A5E-407E-BE51-532CC06BD9B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC545733-2A5E-407E-BE51-532CC06BD9B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
