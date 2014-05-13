@@ -20,9 +20,9 @@ var app = express();
 var auth = require('./auth');
 
 app.engine('hbs', hbs.express3({
-    extname:'.hbs'
+    extname:'.hbs',
+    partialsDir:path.join(__dirname, 'views')
 }));
-
 
 // all environments
 app.set('port', process.env.PORT);

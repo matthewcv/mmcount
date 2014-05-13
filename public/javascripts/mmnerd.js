@@ -100,13 +100,23 @@
                 
                 that.globalBags(module.exports.createStats(data.globalSummary));
                 that.userBags(module.exports.createStats(data.userSummary));
-                var sd = {global:true,user:null,stats:that.globalBags()}
-                console.dir(sd);
-that.statsDisplay(sd);
+                
             });
 
             
         },
+
+        showStatsPopup:function(ev){
+            var chart = $(ev.currentTarget);
+            var sd = {
+                global: chart.hasClass('global-stats'),
+                user: chart.hasClass('user-stats'),
+                stats: chart.hasClass('global-stats')? this.globalBags():this.userBags()
+                }
+            this.statsDisplay(sd);
+            },
+
+        
         
     }
 
@@ -117,6 +127,22 @@ that.statsDisplay(sd);
         return val.validate(mmBag);
     }
 
+    $(".stats-bar").hover(function(e){
+        vm.showStatsPopup(e);
+        var p =$(this).position();
+        var w = $(this).width();
+        
+        $sp = $("#statsPopup");
+        var sw = $sp.width();
+        var sh = $sp.height();
+        
+        $sp.css({'top':(p.top - sh ) + 'px', 'left':(p.left + (w/2) - (sw/2)) + 'px'}).fadeIn();
+        
+        }, 
+        function(e){
+            $("#statsPopup").clearQueue().hide();
+            //$("#statsPopup").fadeOut();
+            });
 
 
     var vm = new ViewModel();

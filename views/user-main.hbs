@@ -1,0 +1,161 @@
+﻿<div class="stats-bar global-stats" data-bind="with:globalBags">
+  <span class="red" data-bind="style:{width:(red.percent * 100) + '%'}"></span>
+  <span class="green" data-bind="style:{width:(green.percent * 100) + '%'}"></span>
+  <span class="blue" data-bind="style:{width:(blue.percent * 100) + '%'}"></span>
+  <span class="brown" data-bind="style:{width:(brown.percent * 100) + '%'}"></span>
+  <span class="orange" data-bind="style:{width:(orange.percent * 100) + '%'}"></span>
+  <span class="yellow" data-bind="style:{width:(yellow.percent * 100) + '%'}"></span>
+</div>
+<div class="stats-bar user-stats" data-bind="with:userBags">
+  <span class="red" data-bind="style:{width:(red.percent * 100) + '%'}"></span>
+  <span class="green" data-bind="style:{width:(green.percent * 100) + '%'}"></span>
+  <span class="blue" data-bind="style:{width:(blue.percent * 100) + '%'}"></span>
+  <span class="brown" data-bind="style:{width:(brown.percent * 100) + '%'}"></span>
+  <span class="orange" data-bind="style:{width:(orange.percent * 100) + '%'}"></span>
+  <span class="yellow" data-bind="style:{width:(yellow.percent * 100) + '%'}"></span>
+</div>
+<form id="mmcountform" class="mmscounts" data-bind="if:currentCount">
+  <div>
+    <div class="row">
+      <div class="col-md-4" data-bind="css:{'bg-danger':validationResult().hardErrs.red}">
+        <div data-bind="if:validationResult().hardErrs.red">
+          <span data-bind="text:valMessages.forcePosInt"></span>
+        </div>
+        <div class="input-group ">
+          <label for="red" class="input-group-addon">Red:</label>
+          <input data-bind="value: currentCount().red" class="form-control" id="red" type="number" min="0" />
+        </div>
+      </div>
+      <div class="col-md-4" data-bind="css:{'bg-danger':validationResult().hardErrs.green}">
+        <div data-bind="if:validationResult().hardErrs.green">
+          <span data-bind="text:valMessages.forcePosInt"></span>
+        </div>
+        <div class="input-group">
+          <label for="green" class="input-group-addon">Green:</label>
+          <input data-bind="value: currentCount().green" class="form-control" id="green" type="number" min="0" />
+        </div>
+      </div>
+      <div class="col-md-4" data-bind="css:{'bg-danger':validationResult().hardErrs.blue}">
+        <div data-bind="if:validationResult().hardErrs.blue">
+          <span data-bind="text:valMessages.forcePosInt"></span>
+        </div>
+        <div class="input-group">
+          <label for="blue" class="input-group-addon">Blue:</label>
+          <input data-bind="value: currentCount().blue" class="form-control" id="blue" type="number" min="0" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" data-bind="css:{'bg-danger':validationResult().hardErrs.brown}">
+        <div data-bind="if:validationResult().hardErrs.brown">
+          <span data-bind="text:valMessages.forcePosInt"></span>
+        </div>
+        <div class="input-group ">
+          <label for="brown" class="input-group-addon">Brown:</label>
+          <input data-bind="value: currentCount().brown" class="form-control" id="brown" type="number" min="0" />
+        </div>
+      </div>
+      <div class="col-md-4" data-bind="css:{'bg-danger':validationResult().hardErrs.orange}">
+        <div data-bind="if:validationResult().hardErrs.orange">
+          <span data-bind="text:valMessages.forcePosInt"></span>
+        </div>
+        <div class="input-group ">
+          <label for="orange" class="input-group-addon">Orange:</label>
+          <input data-bind="value: currentCount().orange" class="form-control" id="orange" type="number" min="0" />
+        </div>
+      </div>
+      <div class="col-md-4" data-bind="css:{'bg-danger':validationResult().hardErrs.yellow}">
+        <div data-bind="if:validationResult().hardErrs.yellow">
+          <span data-bind="text:valMessages.forcePosInt"></span>
+        </div>
+        <div class="input-group ">
+          <label for="yellow" class="input-group-addon">Yellow:</label>
+          <input data-bind="value: currentCount().yellow" class="form-control" id="yellow" type="number" min="0" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="input-group ">
+          <div class="checkbox">
+            <label for="plain" class="">
+              <input type="radio" id="plain" name="type" value="plain" data-bind="checked: currentCount().type" checked="" /> Plain
+            </label>
+            <label for="peanut" class="">
+              <input type="radio" id="peanut" name="type" value="peanut" data-bind="checked: currentCount().type" /> Peanut
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" data-bind="if:!validationResult().softErrs.$model">
+    <!-- ko if: validationResult().hardErrs.$model -->
+    <div class="col-md-4 alert alert-danger" data-bind="text: valMessages.$model.someRequired">
+    </div>
+    <!-- /ko -->
+    <div class="col-md-4">
+      <button class="btn btn-success" data-bind="click:submitCount" type="button">Count em.</button>
+    </div>
+  </div>
+  <div class="row" data-bind="if:validationResult().softErrs.$model">
+    <div class="col-md-8 alert alert-warning">
+      <div class="pull-left" data-bind="text: valMessages.$model.allRequired"></div>
+      <button class="btn btn-success pull-right" data-bind="click:submitCountReally" type="button">Yeah, do it.</button>
+      <div class="clearfix"></div>
+    </div>
+
+  </div>
+</form>
+<div data-bind="fadeInOut:addCountJustHappened" style="display:none">
+  <div class="row">
+    <div class="alert alert-success alert-dismissable col-md-12 ">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      I got your stuff.  Thanks.
+      <button class="btn btn-success">Put in another bag?</button>
+    </div>
+  </div>
+</div>
+
+<div  id="statsPopup" data-bind="with:statsDisplay">
+  <span data-bind="if:global">The WORLD has</span>
+  <span data-bind="if:user">YOU have</span>
+  added <span data-bind="text:stats.totalCandies"></span> M&Ms from <span data-bind="text:stats.summary.totalBags"></span> bags.<br />
+  <table>
+    <tr>
+      <td></td>
+      <td class="red">Red</td>
+      <td class="green">Green</td>
+      <td class="blue">Blue</td>
+      <td class="brown">Brown</td>
+      <td class="orange">Orange</td>
+      <td class="yellow">Yellow</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td class="red" data-bind="text:stats.summary.totalRed"></td>
+      <td class="green" data-bind="text:stats.summary.totalGreen"></td>
+      <td class="blue" data-bind="text:stats.summary.totalBlue"></td>
+      <td class="brown" data-bind="text:stats.summary.totalBrown"></td>
+      <td class="orange" data-bind="text:stats.summary.totalOrange"></td>
+      <td class="yellow" data-bind="text:stats.summary.totalYellow"></td>
+
+    </tr>
+    <tr>
+      <td>Percent</td>
+      <td class="red" data-bind="text:parseInt(stats.red.percent * 100)"></td>
+      <td class="green" data-bind="text:parseInt(stats.green.percent * 100)"></td>
+      <td class="blue" data-bind="text:parseInt(stats.blue.percent * 100)"></td>
+      <td class="brown" data-bind="text:parseInt(stats.brown.percent * 100)"></td>
+      <td class="orange" data-bind="text:parseInt(stats.orange.percent * 100)"></td>
+      <td class="yellow" data-bind="text:parseInt(stats.yellow.percent * 100)"></td>
+
+    </tr>
+
+  </table>
+</div>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-debug.js"></script>
+<script type="text/javascript" src="/models?model=MmBag"></script>
+<script type="text/javascript" src="/javascripts/mmnerd.js"></script>

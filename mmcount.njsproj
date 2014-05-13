@@ -48,8 +48,8 @@
     <Content Include="db\1.sql" />
     <Content Include="models\browserTemplate.hbs" />
     <Content Include="public\stylesheets\style.css" />
-    <Content Include="public\stylesheets\style.less" />
     <Content Include="views\index.hbs" />
+    <Content Include="views\user-main.hbs" />
     <Content Include="views\vars.hbs" />
     <Content Include="Web.config" />
     <Content Include="Web.cloud.config.yuk" />

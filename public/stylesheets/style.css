@@ -74,32 +74,69 @@ label[for=brown] {
   width: 120px;
 }
 
-.chart{
+.stats-bar{
     margin:10px 0;
     font-size:0px;
 }
 
-.chart span{
+.stats-bar span{
     display:inline-block;
     
     height:20px;
 }
 
-.chart .red {
+.stats-bar .red {
     background-color:red;
 }
-.chart .green {
+.stats-bar .green {
     background-color:green;
 }
-.chart .blue {
+.stats-bar .blue {
     background-color:blue;
 }
-.chart .brown {
+.stats-bar .brown {
     background-color:brown;
 }
-.chart .yellow {
+.stats-bar .yellow {
     background-color:yellow;
 }
-.chart .orange {
+.stats-bar .orange {
     background-color:orange;
+}
+
+#statsPopup {
+    text-align:center;
+    -display:none;
+    border: solid 1px black;
+    background-color: whitesmoke;
+    float:left;
+    position:absolute
+}
+
+#statsPopup td{
+    padding: 0 3px;
+    text-align:center;
+}
+
+#statsPopup td:first-child{
+    text-align:right
+}
+
+#statsPopup .red {
+    background-color:rgba(255, 0, 0, 0.5);
+}
+#statsPopup .green {
+    background-color:rgba(0, 128, 0, 0.50);
+}
+#statsPopup .blue {
+    background-color:rgba(0, 0, 255, 0.50);
+}
+#statsPopup .brown {
+    background-color:rgba(165, 42, 42, 0.50);
+}
+#statsPopup .yellow {
+    background-color:rgba(255, 255, 0, 0.50);
+}
+#statsPopup .orange {
+    background-color:rgba(255, 165, 0, 0.50);
 }
