@@ -1,5 +1,6 @@
 ﻿var passport = require('passport'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+    FacebookStrategy = require('passport-facebook').Strategy,
     config = require('./config'),
     userdb = require('./db/users')
     ;
@@ -21,18 +22,29 @@ passport.deserializeUser(function(obj, done) {
     });
 });
 
+passport.use(new FacebookStrategy(config.passport.facebook,
+  function(accessToken, refreshToken, profile, done) {
+      //this is where you get or create the user.  It happens after user is authenticated by facebook.
+      getOrCreateUser(profile,done);
+  }
+));
+
 
 passport.use(new GoogleStrategy(config.passport.google,
   function(accessToken, refreshToken, profile, done) {
       //this is where you get or create the user.  It happens after user is authenticated by google.
+      getOrCreateUser(profile,done);
+  }
+));
 
+function getOrCreateUser(profile, done){
       userdb.getOrCreateUserFromOAuthProfile(profile, function(user) {
           userdb.setUserLoggedInNow(user, function() {
               done(null, user);
           });
       });
-  }
-));
+
+}
 
 module.exports.setUp = function(app) {
     app.use(passport.initialize());
@@ -44,23 +56,23 @@ module.exports.routes = function(app) {
     
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile',
-                                            'https://www.googleapis.com/auth/userinfo.email'] }),
-  function(req, res){
-    // The request will be redirected to Google for authentication, so this
-    // function will not be called.
-  });
+                                            'https://www.googleapis.com/auth/userinfo.email'] }));
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+var authRedirects ={ 
+    successRedirect: '/',
+    failureRedirect: '/' };
 
 // GET /auth/google/callback
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-    app.get('/auth/googlecallback',
-        passport.authenticate('google', { failureRedirect: '/' }),
-        function(req, res) {
-            res.redirect('/');
-        });
+    app.get('/auth/googlecallback', passport.authenticate('google', authRedirects));
 
+
+    app.get('/auth/facebookcallback', passport.authenticate('facebook', authRedirects));
 
     app.get('/auth/signout', function(req, res) {
         req.logout();
