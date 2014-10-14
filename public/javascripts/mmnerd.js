@@ -99,8 +99,9 @@
             $.getJSON("/initData").done(function(data) {
                 
                 that.globalBags(module.exports.createStats(data.globalSummary));
-                that.userBags(module.exports.createStats(data.userSummary));
-                
+                if (data.userSummary) {
+                    that.userBags(module.exports.createStats(data.userSummary));
+                }
             });
 
             

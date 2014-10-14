@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Sessions](
   [PK] int IDENTITY(1,1) NOT NULL ,
-  [Sid] varchar(24) NOT NULL,
+  [Sid] varchar(50) NOT NULL,
   [Expires] datetimeoffset NOT NULL,
   [Sess] nvarchar(MAX) NULL,
   CONSTRAINT [PK_Sessions] PRIMARY KEY CLUSTERED ([PK] ASC)
@@ -65,7 +65,7 @@ INCLUDE ( GoogleId,FacebookId,[UserId],ProfileData,Created,LastLogin 	) WITH (FI
 GO
 
 
-CREATE TABLE [dbo].[Bags](
+CREATE TABLE [mmcount].[Bags](
 	[BagId] [int] IDENTITY(1,1) NOT NULL,
 	[Red] [int] NOT NULL,
 	[Green] [int] NOT NULL,
@@ -84,9 +84,9 @@ CREATE TABLE [dbo].[Bags](
 
 GO
 
-ALTER TABLE [dbo].[Bags]  WITH CHECK ADD  CONSTRAINT [FK_Bags_Users1] FOREIGN KEY([UserId])
+ALTER TABLE [mmcount].[Bags]  WITH CHECK ADD  CONSTRAINT [FK_Bags_Users1] FOREIGN KEY([UserId])
 REFERENCES [dbo].[Users] ([UserId])
 GO
 
-ALTER TABLE [dbo].[Bags] CHECK CONSTRAINT [FK_Bags_Users1]
+ALTER TABLE [mmcount].[Bags] CHECK CONSTRAINT [FK_Bags_Users1]
 GO

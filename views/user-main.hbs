@@ -117,45 +117,5 @@
   </div>
 </div>
 
-<div  id="statsPopup" data-bind="with:statsDisplay">
-  <span data-bind="if:global">The WORLD has</span>
-  <span data-bind="if:user">YOU have</span>
-  added <span data-bind="text:stats.totalCandies"></span> M&Ms from <span data-bind="text:stats.summary.totalBags"></span> bags.<br />
-  <table>
-    <tr>
-      <td></td>
-      <td class="red">Red</td>
-      <td class="green">Green</td>
-      <td class="blue">Blue</td>
-      <td class="brown">Brown</td>
-      <td class="orange">Orange</td>
-      <td class="yellow">Yellow</td>
-    </tr>
-    <tr>
-      <td>Total</td>
-      <td class="red" data-bind="text:stats.summary.totalRed"></td>
-      <td class="green" data-bind="text:stats.summary.totalGreen"></td>
-      <td class="blue" data-bind="text:stats.summary.totalBlue"></td>
-      <td class="brown" data-bind="text:stats.summary.totalBrown"></td>
-      <td class="orange" data-bind="text:stats.summary.totalOrange"></td>
-      <td class="yellow" data-bind="text:stats.summary.totalYellow"></td>
 
-    </tr>
-    <tr>
-      <td>Percent</td>
-      <td class="red" data-bind="text:parseInt(stats.red.percent * 100)"></td>
-      <td class="green" data-bind="text:parseInt(stats.green.percent * 100)"></td>
-      <td class="blue" data-bind="text:parseInt(stats.blue.percent * 100)"></td>
-      <td class="brown" data-bind="text:parseInt(stats.brown.percent * 100)"></td>
-      <td class="orange" data-bind="text:parseInt(stats.orange.percent * 100)"></td>
-      <td class="yellow" data-bind="text:parseInt(stats.yellow.percent * 100)"></td>
 
-    </tr>
-
-  </table>
-</div>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-debug.js"></script>
-<script type="text/javascript" src="/models?model=MmBag"></script>
-<script type="text/javascript" src="/javascripts/mmnerd.js"></script>

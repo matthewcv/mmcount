@@ -6,9 +6,9 @@ var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;
 
 
-var bagInsert = "INSERT dbo.Bags( Red ,Green , Blue ,Orange ,Brown ,Yellow ,Type ,Created , UserId )VALUES  ( @red ,@green ,@blue ,@orange ,@brown ,  @yellow ,@type , SYSUTCDATETIME() ,  @user  ); SELECT BagId, Created from Bags where BagId = SCOPE_IDENTITY();";
+var bagInsert = "INSERT mmcount.Bags( Red ,Green , Blue ,Orange ,Brown ,Yellow ,Type ,Created , UserId )VALUES  ( @red ,@green ,@blue ,@orange ,@brown ,  @yellow ,@type , SYSUTCDATETIME() ,  @user  ); SELECT BagId, Created from mmcount.Bags where BagId = SCOPE_IDENTITY();";
 
-var totals = "SELECT COUNT(BagId) totalBags, SUM(Red) totalRed, SUM(Green) totalGreen,SUM(Blue) totalBlue,SUM(Orange) totalOrange,SUM(Brown) totalBrown,SUM(Yellow) totalYellow FROM Bags";
+var totals = "SELECT COUNT(BagId) totalBags, SUM(Red) totalRed, SUM(Green) totalGreen,SUM(Blue) totalBlue,SUM(Orange) totalOrange,SUM(Brown) totalBrown,SUM(Yellow) totalYellow FROM mmcount.Bags";
 var totalsForUser = totals + " where UserId = @user";
 
 module.exports = {

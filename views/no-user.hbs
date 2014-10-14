@@ -1,0 +1,15 @@
+﻿
+<div class="stats-bar global-stats" data-bind="with:globalBags">
+    <span class="red" data-bind="style:{width:(red.percent * 100) + '%'}"></span>
+    <span class="green" data-bind="style:{width:(green.percent * 100) + '%'}"></span>
+    <span class="blue" data-bind="style:{width:(blue.percent * 100) + '%'}"></span>
+    <span class="brown" data-bind="style:{width:(brown.percent * 100) + '%'}"></span>
+    <span class="orange" data-bind="style:{width:(orange.percent * 100) + '%'}"></span>
+    <span class="yellow" data-bind="style:{width:(yellow.percent * 100) + '%'}"></span>
+</div>
+
+<div>
+    sign in to get started:
+    <a class="btn btn-default btn-lg" href="/auth/google" title="Google sign in"><span class="glyphicon gpLogo"></span> Sign in with Google</a>
+    <a class="btn btn-default btn-lg" href="/auth/facebook" title="Facebook sign in"><span class="glyphicon fbLogo"></span> Sign in with Facebook</a>
+</div>

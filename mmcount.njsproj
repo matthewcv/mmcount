@@ -49,6 +49,7 @@
     <Content Include="models\browserTemplate.hbs" />
     <Content Include="public\stylesheets\style.css" />
     <Content Include="views\index.hbs" />
+    <Content Include="views\no-user.hbs" />
     <Content Include="views\user-main.hbs" />
     <Content Include="views\vars.hbs" />
     <Content Include="Web.config" />
